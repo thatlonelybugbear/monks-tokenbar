@@ -1135,7 +1135,8 @@ Hooks.on("updateCombat", function (combat, delta) {
     if (game.user.isTheGM) {
         if (MonksTokenBar.tokenbar) {
             $(MonksTokenBar.tokenbar.entries).each(function () {
-                this.token?.unsetFlag("monks-tokenbar", "notified");
+                if (this.token?.getFlag("monks-tokenbar", "notified"))
+                    this.token?.unsetFlag("monks-tokenbar", "notified");
             });
         }
 
